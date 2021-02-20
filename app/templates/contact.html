@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block main %}
+
+<h1>Contact Form</h1>
+<form action="" method="POST" name="contact">
+<hr>
+	<p>Fill in this form to contact the site owners.</p>
+
+	<div class="contactform">
+		<label for="name">Name</label>
+		<input type="text" id="name" name="name" placeholder="Mary Doe">
+
+	<div class="contactform">
+		<label for="email">Email</label>
+		<input type="text" id="email" name="email" placeholder="marydoe@random.com">
+	</div>
+
+	<div class="contactform">
+		<label for="subject">Subject</label>
+		<input type="subject" id="subject" name="subject" placeholder="subject">
+	</div>
+
+	<div class="contactform">
+		<label for="message">Message</label>
+		<input type="message" id="message" name="message" placeholder="message">
+    </div>
+
+	<button type="submit" class="send">Send</button>
+	
+</form>
+
+{% endblock %}
