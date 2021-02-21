@@ -4,7 +4,6 @@ Jinja2 Documentation:    http://jinja.pocoo.org/2/documentation/
 Werkzeug Documentation:  http://werkzeug.pocoo.org/documentation/
 This file creates your application.
 """
-
 from app import app
 from app import mail
 from .forms import ContactForm
@@ -31,11 +30,16 @@ def about():
 def contact():
     form = ContactForm()
     
-    if (request.method == 'POST') and (form.validate_on_submit()):
-        name = form.name.data
-        email = form.email.data
-        subject = form.subject.data
-        message = form.message.data
+    if request.method == 'POST':
+        if form.validate_on_submit():
+            name = request.form['name']
+            email = request.form['email']
+            subject = request.form['subject']
+            message = request.form['message']
+
+            msg = Message(subject, sender=(name,email),recipients=["d_jemison@hotmail.com"])
+            msg.body = message
+            mail.send(msg)
 
         flash('Email sent successfully!')
         return redirect(url_for('home')) 

@@ -3,27 +3,35 @@
 {% block main %}
 
 <h1>Contact Form</h1>
-<form action="" method="POST" name="contact">
+<form action="{{url_for('contact')}}" method="POST" name="contact">
 <hr>
+	
+	{{form.csrf_token}}
+
 	<p>Fill in this form to contact the site owners.</p>
 
 	<div class="contactform">
-		<label for="name">Name</label>
-		<input type="text" id="name" name="name" placeholder="Mary Doe">
+		{{form.name.label}}
+		<p>Please enter your full name</p>
+		{{form.name(class="form-area")}}
+	</div>	
 
 	<div class="contactform">
-		<label for="email">Email</label>
-		<input type="text" id="email" name="email" placeholder="marydoe@random.com">
+		{{form.email.label}}
+		<p>Please enter your e-mail address</p>
+		{{form.email(class="form-area")}}
 	</div>
 
 	<div class="contactform">
-		<label for="subject">Subject</label>
-		<input type="subject" id="subject" name="subject" placeholder="subject">
+		{{form.subject.label}}
+		<p>Please enter the subject for your message</p>
+		{{form.subject(class="form-area")}}
 	</div>
 
 	<div class="contactform">
-		<label for="message">Message</label>
-		<input type="message" id="message" name="message" placeholder="message">
+		{{form.message.label}}
+		<p>Please enter the message you would like to send</p>
+		{{form.message(class="form-area")}}
     </div>
 
 	<button type="submit" class="send">Send</button>
