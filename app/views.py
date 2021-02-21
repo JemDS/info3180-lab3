@@ -37,14 +37,13 @@ def contact():
             subject = request.form['subject']
             message = request.form['message']
 
-            msg = Message(subject, sender=(name,email),recipients=["d_jemison@hotmail.com"])
+            msg = Message(subject, sender=(name,email),recipients=["cae8ddf58e-6840fd@inbox.mailtrap.io"])
             msg.body = message
             mail.send(msg)
 
         flash('Email sent successfully!')
         return redirect(url_for('home')) 
-
-    flash_errors(form)    
+   
     return render_template('contact.html', form=form)
 
 ###
